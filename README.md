@@ -1,4 +1,5 @@
 ## demo app - developing with Docker
+ALL CREDITS GO TO THE [DOCKER TUTORIAL](https://www.youtube.com/watch?v=3c-iBn73dDE) by TechWorld with Nana
 
 This demo app shows a simple user profile app set up using 
 - index.html with pure js and css styles
