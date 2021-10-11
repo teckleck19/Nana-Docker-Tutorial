@@ -6,6 +6,7 @@ pipeline {
 
   environment {
     AWS_CREDS = credentials('aws-credentials')
+    PATH = "$PATH:/usr/local/bin/docker-compose"
   }
 
   stages {
