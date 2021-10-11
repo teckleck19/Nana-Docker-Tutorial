@@ -19,7 +19,7 @@ pipeline {
            echo 'Starting to build docker image'
 
                 script {
-                  nodeImage = docker.build("nana-tutorial:${params.tag}")
+                  nodeImage = docker.build("750254998438.dkr.ecr.ap-southeast-1.amazonaws.com/nana-tutorial:${params.tag}")
                 }
         }
       }
