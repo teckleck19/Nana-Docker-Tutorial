@@ -25,7 +25,7 @@ pipeline {
       steps {
         echo "pushing image to ECR in AWS"
         script{
-          withDockerRegistry(credentialsId: 'ecr:ap-southeast-1:aws-credentials', url: '750254998438.dkr.ecr.ap-southeast-1.amazonaws.com/nana-tutorial') {
+          withDockerRegistry(credentialsId: 'ecr:ap-southeast-1:aws-credentials', url: 'https://750254998438.dkr.ecr.ap-southeast-1.amazonaws.com/nana-tutorial') {
               nodeImage.push()
           }
         }
