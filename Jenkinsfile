@@ -17,8 +17,10 @@ pipeline {
         sh '''
           #!/bin/bash
           docker --version
-          docker context ls
           docker compose --version
+          docker context create ecs myecscontext --from-env
+          docker context ls
+          
         '''
       }
     }
