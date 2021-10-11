@@ -1,9 +1,11 @@
+def nodeImage
+
 pipeline {
   
-  def nodeImage
+
 
   agent any
-  
+
   parameters{
     string(name: 'tag', defaultValue: 'latest', description: 'tag for image')
   }
