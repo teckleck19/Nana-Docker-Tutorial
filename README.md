@@ -11,6 +11,9 @@ A docker tutorial that teaches how to use docker to create 3 containers (nodejs 
 - Challenges
 > 1. Figuring out the connection of the nodejs app to the mongodb by changing some lines in the base code
 
+
+
+
 #### Webhook for jenkins server (ec2) to "kinda" build the app whenever theres changes in the repo
 - ec2 instance
 > 1. Created a ec2 linux instance using AWS console
