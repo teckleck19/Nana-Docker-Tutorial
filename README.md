@@ -1,75 +1,38 @@
-## demo app - developing with Docker
+## Learning DevOps 
+### Base Project
+This was a demo app - developing with Docker:
 ALL CREDITS GO TO THE [DOCKER TUTORIAL](https://www.youtube.com/watch?v=3c-iBn73dDE) by TechWorld with Nana
+A docker tutorial that teaches how to use docker to create 3 containers (nodejs app, mongodb, mongo-express) that are connected to one another using docker-compose.
 
-This demo app shows a simple user profile app set up using 
-- index.html with pure js and css styles
-- nodejs backend with express module
-- mongodb for data storage
-
-All components are docker-based
-
-### With Docker
-
-#### To start the application
-
-Step 1: Create docker network
-
-    docker network create mongo-network 
-
-Step 2: start mongodb 
-
-    docker run -d -p 27017:27017 -e MONGO_INITDB_ROOT_USERNAME=admin -e MONGO_INITDB_ROOT_PASSWORD=password --name mongodb --net mongo-network mongo    
-
-Step 3: start mongo-express
-    
-    docker run -d -p 8081:8081 -e ME_CONFIG_MONGODB_ADMINUSERNAME=admin -e ME_CONFIG_MONGODB_ADMINPASSWORD=password --net mongo-network --name mongo-express -e ME_CONFIG_MONGODB_SERVER=mongodb mongo-express   
-
-_NOTE: creating docker-network in optional. You can start both containers in a default network. In this case, just emit `--net` flag in `docker run` command_
-
-Step 4: open mongo-express from browser
-
-    http://localhost:8081
-
-Step 5: create `user-account` _db_ and `users` _collection_ in mongo-express
-
-Step 6: Start your nodejs application locally - go to `app` directory of project 
-
-    npm install 
-    node server.js
-    
-Step 7: Access you nodejs application UI from browser
-
-    http://localhost:3000
-
-### With Docker Compose
-
-#### To start the application
-
-Step 1: start mongodb and mongo-express
-
-    docker-compose -f docker-compose.yaml up
-    
-_You can access the mongo-express under localhost:8080 from your browser_
-    
-Step 2: in mongo-express UI - create a new database "my-db"
-
-Step 3: in mongo-express UI - create a new collection "users" in the database "my-db"       
-    
-Step 4: start node server 
-
-    npm install
-    node server.js
-    
-Step 5: access the nodejs application from browser 
-
-    http://localhost:3000
-
-#### To build a docker image from the application
-
-    docker build -t my-app:1.0 .       
-    
-The dot "." at the end of the command denotes location of the Dockerfile.
-
----
-#### What I built on top of this
-1. webhook for jenkins server (ec2) to "kinda" build the app whenever theres changes in the repo
+### What I built on top of this
+#### Kubernetes (Minikube)
+> 1. Created a k8 cluster for 3 different services: nodejs app, mongodb, mongo-express 
+> 2. Learned how to tag docker images and push them to AWS ECR
+- Challenges
+> 1. Figuring out the connection of the nodejs app to the mongodb by changing some lines in the base code
+<br/><br/> 
+#### Webhook for jenkins server (ec2) to "kinda" build the app whenever theres changes in the repo
+- ec2 instance
+> 1. Created a ec2 linux instance using AWS console
+> 2. Putty for SSH connection to instance's shell
+> 3. Installed jenkins and other dependencies (java-openjdk, git)
+> 4. Started jenkins server 
+> 5. Connect to jenkins by using <ec2_dns>:8080
+<br/>
+- Webhook
+> 1. Created github webhook for a pipeline
+> 2. Created github webhook for multibranch pipepline (the use of multibranch pipeline trigger token plug-in
+<br/>
+- Challenges
+> 1. Very simple step but I forgot that I have to install git for the to run builds using Jenkinfiles in github
+<br/><br/> 
+#### Pushing docker image of node application to ecr
+- AWS credentials
+> 1. Easily configured using the CloudBees AWS credentials plug-in
+<br/>
+- Docker on EC2 instance
+> 1. Installed docker using yum
+<br/>
+- Challenges
+> 1. Giving permission to use docker for jenkins
+> 2. Jenkinsfile wrapper (withDockerRegistry) - RMB to use the pipeline syntax helper
