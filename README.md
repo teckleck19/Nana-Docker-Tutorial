@@ -6,7 +6,8 @@ A docker tutorial that teaches how to use docker to create 3 containers (nodejs 
 
 #### What I built on top of this
 1. Kubernetes (Minikube)
-Created a k8 cluster for 3 different services: nodejs app, mongodb, mongo-express
+> 1. Created a k8 cluster for 3 different services: nodejs app, mongodb, mongo-express 
+> 2. Learned how to tag docker images and push them to AWS ECR
 - Challenges
 > 1. Figuring out the connection of the nodejs app to the mongodb by changing some lines in the base code
 
