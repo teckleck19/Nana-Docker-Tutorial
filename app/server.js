@@ -5,6 +5,7 @@ let MongoClient = require('mongodb').MongoClient;
 let bodyParser = require('body-parser');
 let app = express();
 
+
 app.use(bodyParser.urlencoded({
   extended: true
 }));
@@ -13,6 +14,10 @@ app.use(bodyParser.json());
 app.get('/', function (req, res) {
     res.sendFile(path.join(__dirname, "index.html"));
   });
+
+app.get('/index.js', function (req, res) {
+  res.sendFile(path.join(__dirname, "index.js"));
+});
 
 app.get('/profile-picture', function (req, res) {
   let img = fs.readFileSync(path.join(__dirname, "images/profile-1.jpg"));
@@ -26,6 +31,8 @@ let mongoUrlLocal = "mongodb://admin:password@localhost:27017";
 // use when starting application as docker container
 let mongoUrlDocker = "mongodb://admin:password@mongodb";
 
+let mongoUrlK8 = "mongodb://admin:password@".concat(process.env.MONGO_URL);
+
 // pass these options to mongo client connect request to avoid DeprecationWarning for current Server Discovery and Monitoring engine
 let mongoClientOptions = { useNewUrlParser: true, useUnifiedTopology: true };
 
@@ -35,7 +42,7 @@ let databaseName = "my-db";
 app.post('/update-profile', function (req, res) {
   let userObj = req.body;
 
-  MongoClient.connect(mongoUrlLocal, mongoClientOptions, function (err, client) {
+  MongoClient.connect(mongoUrlK8, mongoClientOptions, function (err, client) {
     if (err) throw err;
 
     let db = client.db(databaseName);
@@ -57,9 +64,9 @@ app.post('/update-profile', function (req, res) {
 app.get('/get-profile', function (req, res) {
   let response = {};
   // Connect to the db
-  MongoClient.connect(mongoUrlLocal, mongoClientOptions, function (err, client) {
+  MongoClient.connect(mongoUrlK8, mongoClientOptions, function (err, client) {
+    console.log("connecting...")
     if (err) throw err;
-
     let db = client.db(databaseName);
 
     let myquery = { userid: 1 };
