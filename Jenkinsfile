@@ -14,7 +14,7 @@ pipeline {
            echo 'Starting to build docker image'
 
                 script {
-                    def nodeImage = docker.build("my-image:${env.BUILD_ID}")
+                    def nodeImage = docker.build("nana-tutorial:${env.BUILD_ID}")
                 }
         }
       }
