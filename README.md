@@ -1,17 +1,17 @@
 ## Learning DevOps 
-#### Base Project
+### Base Project
 This was a demo app - developing with Docker:
 ALL CREDITS GO TO THE [DOCKER TUTORIAL](https://www.youtube.com/watch?v=3c-iBn73dDE) by TechWorld with Nana
 A docker tutorial that teaches how to use docker to create 3 containers (nodejs app, mongodb, mongo-express) that are connected to one another using docker-compose.
 
-#### What I built on top of this
-1. Kubernetes (Minikube)
+### What I built on top of this
+#### Kubernetes (Minikube)
 > 1. Created a k8 cluster for 3 different services: nodejs app, mongodb, mongo-express 
 > 2. Learned how to tag docker images and push them to AWS ECR
 - Challenges
 > 1. Figuring out the connection of the nodejs app to the mongodb by changing some lines in the base code
 
-2. Webhook for jenkins server (ec2) to "kinda" build the app whenever theres changes in the repo
+#### Webhook for jenkins server (ec2) to "kinda" build the app whenever theres changes in the repo
 - ec2 instance
 > 1. Created a ec2 linux instance using AWS console
 > 2. Putty for SSH connection to instance's shell
