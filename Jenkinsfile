@@ -14,7 +14,7 @@ pipeline {
            echo 'Starting to build docker image'
 
                 script {
-                    def nodeImage = docker.build("nana-tutorial:${env.BUILD_ID}")
+                    def nodeImage = docker.build("nana-tutorial:${params.tag}")
                 }
         }
       }
@@ -26,7 +26,7 @@ pipeline {
         echo "pushing image to ECR in AWS"
         script{
           withDockerRegistry(credentialsId: 'ecr:ap-southeast-1:aws-credentials', url: '750254998438.dkr.ecr.ap-southeast-1.amazonaws.com/nana-tutorial') {
-              nodeImage.push("${params.tag}")
+              nodeImage.push()
           }
         }
 
