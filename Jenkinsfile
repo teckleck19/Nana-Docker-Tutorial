@@ -6,7 +6,7 @@ pipeline {
 
   environment {
     AWS_CREDS = credentials('aws-credentials')
-    PATH = "$PATH:/usr/local/bin/docker-compose"
+    PATH = "$PATH:/usr/bin/docker"
   }
 
   stages {
@@ -16,7 +16,7 @@ pipeline {
       steps {
         sh '''
           #!/bin/bash
-          docker --version
+          which docker
           docker-compose --version
           docker context create ecs myecscontext --from-env
           docker context ls
