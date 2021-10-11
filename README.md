@@ -25,7 +25,7 @@ A docker tutorial that teaches how to use docker to create 3 containers (nodejs 
 <br/>
 - Challenges
 > 1. Very simple step but I forgot that I have to install git for the to run builds using Jenkinfiles in github
-<br/><br/> 
+<br/><br/>
 #### Pushing docker image of node application to ecr
 - AWS credentials
 > 1. Easily configured using the CloudBees AWS credentials plug-in
