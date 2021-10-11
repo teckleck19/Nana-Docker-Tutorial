@@ -2,48 +2,30 @@ def nodeImage
 
 pipeline {
   
-
-
   agent any
 
-  parameters{
-    string(name: 'tag', defaultValue: 'latest', description: 'tag for image')
+  environment {
+    AWS_CREDS = credentials('aws-credentials')
   }
+
   stages {
     
-    stage("Build image") {
+    stage("Tooling versions") {
       
       steps {
-        echo "buidling docker image"
-        script{
-           echo 'Starting to build docker image'
-
-                script {
-                  nodeImage = docker.build("750254998438.dkr.ecr.ap-southeast-1.amazonaws.com/nana-tutorial:${params.tag}")
-                }
-        }
+        sh '''
+          docker --version
+          docker-compose version
+        '''
       }
     }
     
-    stage("Push Image") {
-      
-      steps {
-        echo "pushing image to ECR in AWS"
-        script{
-          withDockerRegistry(credentialsId: 'ecr:ap-southeast-1:aws-credentials', url: 'https://750254998438.dkr.ecr.ap-southeast-1.amazonaws.com/nana-tutorial') {
-              nodeImage.push()
-          }
-        }
-
-      }
-    }
-
-    stage("deploy") {
-      
-      steps {
-       echo "deploy application"
-
-      }
+    stage("Deploy") {
+      steps{
+        sh 'docker context use myecscontext'
+        sh 'docker compose up'
+        sh 'docker compose ps --format json'
+      }   
     }
   }
 }
