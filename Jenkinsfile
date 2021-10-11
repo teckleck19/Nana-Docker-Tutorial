@@ -6,7 +6,7 @@ pipeline {
 
   environment {
     AWS_CREDS = credentials('aws-credentials')
-    PATH = "$PATH:/usr/bin/local"
+    PATH = "$PATH:/usr/local/bin"
   }
 
   stages {
