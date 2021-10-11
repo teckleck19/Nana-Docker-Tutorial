@@ -1,7 +1,7 @@
 pipeline {
   
   agent any
-  
+ 
   stages {
     
     stage("build") {
@@ -11,7 +11,11 @@ pipeline {
       }
     }
     stage("test") {
-      
+      when{
+        expression{
+          BRANCH_NAME == "main"
+        }
+      }
       steps {
       echo "testiing application"
 
