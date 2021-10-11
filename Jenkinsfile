@@ -1,6 +1,9 @@
 pipeline {
   
+  def nodeImage
+
   agent any
+  
   parameters{
     string(name: 'tag', defaultValue: 'latest', description: 'tag for image')
   }
@@ -14,7 +17,7 @@ pipeline {
            echo 'Starting to build docker image'
 
                 script {
-                    def nodeImage = docker.build("nana-tutorial:${params.tag}")
+                  nodeImage = docker.build("nana-tutorial:${params.tag}")
                 }
         }
       }
