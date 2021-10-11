@@ -10,10 +10,7 @@ A docker tutorial that teaches how to use docker to create 3 containers (nodejs 
 > 2. Learned how to tag docker images and push them to AWS ECR
 - Challenges
 > 1. Figuring out the connection of the nodejs app to the mongodb by changing some lines in the base code
-
-
-
-
+<br/><br/> 
 #### Webhook for jenkins server (ec2) to "kinda" build the app whenever theres changes in the repo
 - ec2 instance
 > 1. Created a ec2 linux instance using AWS console
@@ -21,8 +18,22 @@ A docker tutorial that teaches how to use docker to create 3 containers (nodejs 
 > 3. Installed jenkins and other dependencies (java-openjdk, git)
 > 4. Started jenkins server 
 > 5. Connect to jenkins by using <ec2_dns>:8080
+<br/>
 - Webhook
 > 1. Created github webhook for a pipeline
 > 2. Created github webhook for multibranch pipepline (the use of multibranch pipeline trigger token plug-in
+<br/>
 - Challenges
 > 1. Very simple step but I forgot that I have to install git for the to run builds using Jenkinfiles in github
+<br/><br/> 
+#### Pushing docker image of node application to ecr
+- AWS credentials
+> 1. Easily configured using the CloudBees AWS credentials plug-in
+<br/>
+- Docker on EC2 instance
+> 1. Installed docker using yum
+<br/>
+- Challenges
+> 1. Giving permission to use docker for jenkins
+> 2. Jenkinsfile wrapper (withDockerRegistry) - RMB to use the pipeline syntax helper
+
