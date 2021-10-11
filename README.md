@@ -36,3 +36,4 @@ A docker tutorial that teaches how to use docker to create 3 containers (nodejs 
 - Challenges
 > 1. Giving permission to use docker for jenkins
 > 2. Jenkinsfile wrapper (withDockerRegistry) - RMB to use the pipeline syntax helper
+

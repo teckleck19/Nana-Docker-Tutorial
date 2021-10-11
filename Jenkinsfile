@@ -26,7 +26,7 @@ pipeline {
     }
     
     stage("Push Image") {
-
+      
       steps {
         echo "pushing image to ECR in AWS"
         script{
