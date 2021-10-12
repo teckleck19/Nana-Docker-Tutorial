@@ -6,7 +6,7 @@ services:
     ports:
     - 3000:3000
   mongodb:
-    image: 750254998438.dkr.ecr.ap-southeast-1/mongo:latest
+    image: 750254998438.dkr.ecr.ap-southeast-1.amazonaws.com/mongo:latest
     ports:
       - 27017:27017
     environment:
@@ -15,7 +15,7 @@ services:
     volumes:
       - mongo-data:/data/db
   mongo-express:
-    image: 750254998438.dkr.ecr.ap-southeast-1/mongo-express:latest
+    image: 750254998438.dkr.ecr.ap-southeast-1.amazonaws.com/mongo-express:latest
     ports:
       - 8080:8081
     environment:
