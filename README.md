@@ -32,4 +32,12 @@ A docker tutorial that teaches how to use docker to create 3 containers (nodejs 
 - Challenges
 > 1. Giving permission to use docker for jenkins
 > 2. Jenkinsfile wrapper (withDockerRegistry) - RMB to use the pipeline syntax helper
-
+---
+#### Deploying containers on ECS using Jenkins with (docker compose + ECS integration in agent's shell)
+[https://docs.docker.com/cloud/ecs-integration/](https://docs.docker.com/cloud/ecs-integration/)
+> 1. download latest docker compose
+> 2. create a docker ecs context
+> 3. "docker compose up" after switching context
+- Challenges
+> 1. Spent quite a long time trying to figure out how to upgrade docker compose.
+> 2. Docker compose up still giving permissions errors after I attached the policy to my IAM user according to the above link.
