@@ -6,7 +6,7 @@ pipeline {
 
   environment {
     AWS_CREDS = credentials('aws-credentials')
-    PATH = "$PATH:/usr/local/bin"
+    PATH = "/usr/local/bin:$PATH"
   }
 
   stages {
@@ -15,9 +15,9 @@ pipeline {
       
       steps {
         sh '''
-          /usr/local/bin/docker version
-          /usr/local/bin/docker compose version
-          /usr/local/bin/docker context ls
+          docker version
+          docker compose version
+          docker context ls
           
         '''
       }
@@ -25,9 +25,9 @@ pipeline {
     
     stage("Deploy") {
       steps{
-        sh '/usr/local/bin/docker context use myecscontext'
-        sh '/usr/local/bin/docker compose up'
-        sh '/usr/local/bin/docker compose ps --format json'
+        sh 'docker context use myecscontext'
+        sh 'docker compose up'
+        sh 'docker compose ps --format json'
       }   
     }
   }
