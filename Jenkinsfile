@@ -1,5 +1,3 @@
-def nodeImage
-
 pipeline {
   
   agent any
