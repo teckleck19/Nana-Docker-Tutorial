@@ -16,7 +16,6 @@ pipeline {
           docker version
           docker compose version
           docker context ls
-          
         '''
       }
     }
