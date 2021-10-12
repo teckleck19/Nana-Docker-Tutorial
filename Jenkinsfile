@@ -22,6 +22,7 @@ pipeline {
 
     stage("Build") {
       steps{
+        sh 'aws ecr get-login-password --region ap-southeast-1 | docker login --username AWS --password-stdin 750254998438.dkr.ecr.ap-southeast-1.amazonaws.com'
         sh 'docker context use default'
         sh 'docker compose pull'
         sh 'docker compose build'
