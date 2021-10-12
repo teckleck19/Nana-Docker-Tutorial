@@ -15,9 +15,9 @@ pipeline {
       
       steps {
         sh '''
-          /usr/local/bin docker-compose --version
-          /usr/local/bin docker context create ecs myecscontext --from-env
-          /usr/local/bin docker context ls
+          /usr/local/bin/docker-compose --version
+          /usr/local/bin/docker context create ecs myecscontext --from-env
+          /usr/local/bin/docker context ls
           
         '''
       }
@@ -25,9 +25,9 @@ pipeline {
     
     stage("Deploy") {
       steps{
-        sh '/usr/local/bin docker context use myecscontext'
-        sh '/usr/local/bin docker-compose up'
-        sh '/usr/local/bin docker-compose ps --format json'
+        sh '/usr/local/bin/docker context use myecscontext'
+        sh '/usr/local/bin/docker-compose up'
+        sh '/usr/local/bin/docker-compose ps --format json'
       }   
     }
   }
