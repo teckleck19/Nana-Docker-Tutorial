@@ -21,7 +21,7 @@ pipeline {
       }
     }
 
-    stage("Deploy") {
+    stage("Build") {
       steps{
         sh 'docker context use default'
         sh 'docker compose build'
