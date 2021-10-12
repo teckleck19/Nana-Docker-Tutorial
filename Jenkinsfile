@@ -15,8 +15,8 @@ pipeline {
       
       steps {
         sh '''
+        /usr/local/bin/docker version
           /usr/local/bin/docker compose version
-          /usr/local/bin/docker context create ecs myecscontext --from-env
           /usr/local/bin/docker context ls
           
         '''
