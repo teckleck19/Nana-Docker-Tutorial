@@ -37,9 +37,21 @@ A docker tutorial that teaches how to use docker to create 3 containers (nodejs 
 ---
 #### Deploying containers on ECS using Jenkins with (docker compose + ECS integration in agent's shell)
 [https://docs.docker.com/cloud/ecs-integration/](https://docs.docker.com/cloud/ecs-integration/)
-> 1. download latest docker compose
-> 2. create a docker ecs context
+> 1. downloaded latest docker compose
+> 2. created a docker ecs context
 > 3. "docker compose up" after switching context
 - Challenges
 > 1. Spent quite a long time trying to figure out how to upgrade docker compose.
 > 2. Docker compose up still giving permissions errors after I attached the policy to my IAM user according to the above link.
+---
+#### Monitoring with Prometheus + Grafana UI (helm charts)
+- Setting up Prometheus in k8s
+> 1. download helm
+> 2. helm repo add prometheus-community
+> 3. helm install kube-prometheus-stack (helm chart of prometheus operator)
+> 4. Port forward Grafana Pod and played around with the UI
+
+- Prometheus conneting to mongodb
+> 1. Need mongo db exporter! (helm chart from bitnami/mongodb)
+> 2. Configure values in the chart (enabled metrics, servicemonitor's label)
+> 3. Port forward prometheus ui service.
